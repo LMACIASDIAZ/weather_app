@@ -12,31 +12,26 @@ def get_weather_data(city):
     r = requests.get(url).json()
     print(r)
     return r
- 
+
 @app.route('/prueba')
 def prueba():
-    clima= get_weather_data('GUAYAQUIL')
+    clima= get_weather_data('cuenca')
     temperatura=str(clima['main']['temp'])
     descripcion=str(clima['weather'][0]['description'])
     icono=str(clima['weather'][0]['icon'])
 
     r_json={ 
-        'ciudad':'guayaquil',
+        'ciudad':'cuenca',
         'temperatura': temperatura,
         'descripcion':descripcion,
         'icono':icono}
     return render_template('weather.html',clima= r_json)
     
 
-@app.route('/luis')
-def luis():
-    get_weather_data('GUAYAQUIL')
-    return get_weather_data('GUAYAQUIL')
-
-
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('MI_CV.html')
+
 
 @app.route('/clima')
 def clima():
