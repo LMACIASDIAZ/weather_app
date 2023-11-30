@@ -1,6 +1,17 @@
 from flask import Flask, render_template
 import requests
 from dotenv import load_dotenv, dotenv_values
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+
+metaData= MetaData()
+
+cities= Table('Cities', metaData, 
+            Column ('id', Integer(),primary_key=True, autoincrement=True),
+            Column('nombre', String(100), unique=True)
+             )
+#config= dotenv_values('.env')
+#app= Flask(__name__)
+#engine= create_engine('sqlite:///weather.db')
 
 config = dotenv_values('.env')
  
